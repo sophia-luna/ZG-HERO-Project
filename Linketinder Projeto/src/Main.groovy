@@ -3,6 +3,8 @@ import mypackage.Empresa
 import mypackage.Menu
 import mypackage.Validacao
 
+// SOPHIA SOUSA-AGUIAR LUNA
+
 static void main(String[] args) {
 
     LinkedList<Candidato> candidatos = new LinkedList<Candidato>()
