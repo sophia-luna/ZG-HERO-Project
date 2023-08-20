@@ -2,9 +2,9 @@ package mypackage
 
 class Candidato extends Pessoa{
 
-    String cpf
-    int idade
-    String descricaoPessoal
+    private String cpf
+    private int idade
+    private String descricaoPessoal
 
     Candidato (String nome, String cpf, int idade, String email, String estado, String cep, String descricaoPessoal) {
         this.nome=nome

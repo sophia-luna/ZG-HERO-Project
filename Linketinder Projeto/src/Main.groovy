@@ -1,5 +1,7 @@
 import mypackage.Candidato
 import mypackage.Empresa
+import mypackage.ListaCandidatos
+import mypackage.ListaEmpresas
 import mypackage.Menu
 import mypackage.Validacao
 
@@ -7,8 +9,8 @@ import mypackage.Validacao
 
 static void main(String[] args) {
 
-    LinkedList<Candidato> candidatos = new LinkedList<Candidato>()
-    LinkedList<Empresa> empresas = new LinkedList<Empresa>()
+    ListaCandidatos candidatos=new ListaCandidatos()
+    ListaEmpresas empresas = new ListaEmpresas()
 
     //O programa tem que manter um array de candidatos com no mínimo 5 candidatos pré-cadastrados:
     Candidato c1=new Candidato("Maria Silva", "23.456.789-01", 27, "maria.silva@email.com", "Amazonas", "01234-567", "Sou uma profissional dedicada e apaixonada por tecnologia. Tenho experiência em desenvolvimento web e estou sempre em busca de desafios que me permitam expandir minhas habilidades. Adoro trabalhar em equipe e estou sempre aberta a aprender coisas novas.")
@@ -21,12 +23,11 @@ static void main(String[] args) {
     c1.addCompetencia("HTML")
     c3.addCompetencia("Corel")
     c3.addCompetencia("CriCut")
-    candidatos.add(c1)
-    candidatos.add(c2)
-    candidatos.add(c3)
-    candidatos.add(c4)
-    candidatos.add(c5)
-
+    candidatos.cadastrarCandidato(c1)
+    candidatos.cadastrarCandidato(c2)
+    candidatos.cadastrarCandidato(c3)
+    candidatos.cadastrarCandidato(c4)
+    candidatos.cadastrarCandidato(c5)
 
     //Deve existir um array de empresas com no mínimo 5 empresas pré-cadastradas:
     Empresa e1=new Empresa("InovaTech Solutions", "12.345.678/0001-01", "Brasil", "contato@inovatechsolutions.com", "São Paulo", "12345-678", "A InovaTech Solutions é uma empresa de tecnologia focada em desenvolver soluções inovadoras para impulsionar negócios. Nossa equipe apaixonada por tecnologia está comprometida em criar produtos que transformam indústrias e melhoram a vida das pessoas.")
@@ -37,12 +38,11 @@ static void main(String[] args) {
     e1.addCompetencia("Javascript")
     e1.addCompetencia("Python")
     e3.addCompetencia("Corel")
-    empresas.add(e1)
-    empresas.add(e2)
-    empresas.add(e3)
-    empresas.add(e4)
-    empresas.add(e5)
-
+    empresas.cadastrarEmpresa(e1)
+    empresas.cadastrarEmpresa(e2)
+    empresas.cadastrarEmpresa(e3)
+    empresas.cadastrarEmpresa(e4)
+    empresas.cadastrarEmpresa(e5)
 
 
     def loop=true
@@ -55,12 +55,12 @@ static void main(String[] args) {
         switch (i) {
             case 1:
 
-                candidatos.add(Menu.criarCandidato())
+                candidatos.cadastrarCandidato(Menu.criarCandidato())
                 break
 
             case 2:
 
-                empresas.add(Menu.criarEmpresa())
+                empresas.cadastrarEmpresa(Menu.criarEmpresa())
                 break
 
             case 3:
@@ -71,7 +71,8 @@ static void main(String[] args) {
                 }
                 else {
                     int j = 1
-                    for (Candidato candidato : candidatos) {
+                    LinkedList<Candidato> candidatosCopia=candidatos.listar()
+                    for (Candidato candidato : candidatosCopia) {
                         println("   Candidato ${j}")
                         println(candidato)
                         j++
@@ -87,7 +88,8 @@ static void main(String[] args) {
                 else {
                     int j = 1
                     println("Listando todos as empresas...\n")
-                    for (Empresa empresa : empresas) {
+                    LinkedList<Empresa> empresasCopias=empresas.listar()
+                    for (Empresa empresa : empresasCopias) {
                         println("   Empresa ${j}")
                         println(empresa)
                         j++
@@ -98,13 +100,13 @@ static void main(String[] args) {
             case 5:
 
                 println("Deletando todos os candidatos...\n")
-                candidatos.clear()
+                candidatos.limparLista()
                 break
 
             case 6:
 
                 println("Deletando todos as empresas...\n")
-                empresas.clear()
+                empresas.limparLista()
                 break
 
             case 7:

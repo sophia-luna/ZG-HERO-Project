@@ -1,17 +1,19 @@
 package mypackage
 
-class Menu {
+import groovy.test.GroovyTestCase
+
+class Menu extends GroovyTestCase{
 
     static void displayMenu() {
 
-        println("    Menu");
-        println("1. Cadastrar novo candidato");
-        println("2. Cadastrar nova empresa");
-        println("3. Listar todos os candidatos");
-        println("4. Listar todas as empresas");
-        println("5. Limpar todos os candidatos");
-        println("6. Limpar todas as empresas");
-        println("7. Sair");
+        println("    Menu")
+        println("1. Cadastrar novo candidato")
+        println("2. Cadastrar nova empresa")
+        println("3. Listar todos os candidatos")
+        println("4. Listar todas as empresas")
+        println("5. Limpar todos os candidatos")
+        println("6. Limpar todas as empresas")
+        println("7. Sair")
 
     }
 
@@ -34,6 +36,7 @@ class Menu {
                 "Idade inserida inválida."
             }
         }
+
         print("Email do Candidato: ")
         def email=System.in.newReader().readLine()
         print("Estado: ")
@@ -48,8 +51,8 @@ class Menu {
         while(true){
             print("Deseja inserir uma competência(s/n): ")
             def input=System.in.newReader().readLine()
-            if(Validacao.simNaoValido(input)) {
-                input=input.toLowerCase()
+            input=input.toLowerCase()
+            if(Validacao.respostaValida(input)) {
                 if (input == "s") {
                     print("Competência: ")
                     def competencia = System.in.newReader().readLine()
@@ -90,13 +93,16 @@ class Menu {
             print("Deseja inserir uma competência(s/n): ")
             def input=System.in.newReader().readLine()
             input=input.toLowerCase()
-            if(input == "s"){
-                print("Competência desejada: ")
-                def competencia=System.in.newReader().readLine()
-                empresa.addCompetencia(competencia)
-            }
-            else{
-                break
+            if(Validacao.respostaValida(input)) {
+                if (input == "s") {
+                    print("Competência desejada: ")
+                    def competencia = System.in.newReader().readLine()
+                    empresa.addCompetencia(competencia)
+                } else {
+                    break
+                }
+            }else{
+                println("Opção Inválida. Insira 's' para SIM ou 'n' para NAO")
             }
         }
 

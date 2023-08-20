@@ -1,12 +1,13 @@
 package mypackage
+import groovy.test.GroovyTestCase
 
-class Validacao {
+class Validacao extends GroovyTestCase{
 
     static int opcaoValida(String input){
 
-        int opcaoMenu;
+        int opcaoMenu
         try{
-            opcaoMenu=Integer.parseInt(input);
+            opcaoMenu=Integer.parseInt(input)
             if (opcaoMenu>0 && opcaoMenu<=7){
                 return opcaoMenu
             }
@@ -24,7 +25,7 @@ class Validacao {
         int idade
         try{
             idade=Integer.parseInt(input)
-            if(idade>0 && idade<100){
+            if(idade>=18 && idade<100){
                 return idade
             }
             else{
@@ -37,8 +38,7 @@ class Validacao {
 
     }
 
-    static boolean simNaoValido(String input){
-        input=input.toLowerCase()
+    static boolean respostaValida(String input){
         if(input!="s" && input!="n"){
             return false
         }

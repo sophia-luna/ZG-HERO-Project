@@ -2,9 +2,9 @@ package mypackage
 
 class Empresa extends Pessoa {
 
-    String cnpj
-    String pais
-    String descricaoEmpresa
+    private String cnpj
+    private String pais
+    private String descricaoEmpresa
 
 
     Empresa (String nome, String cnpj, String email, String pais, String estado, String cep, String descricaoEmpresa) {
